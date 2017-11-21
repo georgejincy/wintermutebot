@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/georgejincy/wintermutebot/issues"
   },
-  "homepage": "https://github.com/georgejincy/wintermutebot#readme"
+  "homepage": "https://github.com/georgejincy/wintermutebot#readme",
+  "dependencies": {
+    "botkit": "^0.6.7"
+  }
 }
