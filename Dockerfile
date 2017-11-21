@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 #install botkit
 COPY package.json /usr/src/app/
 RUN npm install --production
+COPY config.json /usr/src/app/
 COPY index.js /usr/src/app/ 
 
 #set startup commands
