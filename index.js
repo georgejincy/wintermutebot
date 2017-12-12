@@ -32,7 +32,7 @@ controller.hears(
   function (bot, message) {
     request({
       method: 'GET',
-      uri: 'http://ringleader.int.bhwebapps.com/healthcheck',
+      uri: 'http://172.20.20.20:80/healthcheck',
       json: true
     })
       .then(function (response) {
