@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/georgejincy/wintermutebot#readme",
   "dependencies": {
-    "botkit": "^0.6.7"
+    "botkit": "^0.6.7",
+    "request-promise": "^4.2.2"
   }
 }
