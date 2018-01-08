@@ -35,7 +35,7 @@ function checkHealth () {
     .then(function (response) {
       if (!response.timestamp) {
         wintermute.say({
-          text: ':rotating_light: _knysna_ *DOWN*.',
+          text: ':rotating_light::elephant: _knysna_ *DOWN*.',
           channel: getChannelID('doitlive')
         })
       }
@@ -43,7 +43,7 @@ function checkHealth () {
     .catch(function (err) {
       console.log(err)
       wintermute.say({
-        text: ':rotating_light: _knysna_ *DOWN*',
+        text: ':rotating_light::elephant: _knysna_ *DOWN*',
         channel: getChannelID('doitlive')
       })
     })
@@ -57,7 +57,7 @@ function checkHealth () {
     .then(function (response) {
       if (!response.timestamp) {
         wintermute.say({
-          text: ':rotating_light: :circus_tent: _ringleader_ *DOWN*',
+          text: ':rotating_light::circus_tent: _ringleader_ *DOWN*',
           channel: getChannelID('doitlive')
         })
       }
@@ -82,14 +82,14 @@ function checkKnysnaHealth (bot, message) {
       console.log(JSON.stringify(response))
 
       if (response.timestamp) {
-        bot.reply(message, ':white_check_mark: :elephant: _knysna_ *UP*')
+        bot.reply(message, ':white_check_mark::elephant: _knysna_ *UP*')
       } else {
-        bot.reply(message, ':rotating_light: _knysna_ *DOWN*.')
+        bot.reply(message, ':rotating_light::elephant: _knysna_ *DOWN*.')
       }
     })
     .catch(function (err) {
       console.log(err)
-      bot.reply(message, ':rotating_light: _knysna_ :confused: ')
+      bot.reply(message, ':rotating_light::elephant: _knysna_ :confused: ')
     })
 }
 
@@ -103,9 +103,9 @@ function checkRingleaderHealth (bot, message) {
       console.log('Blabla')
       console.log(JSON.stringify(response))
       if (response.timestamp) {
-        bot.reply(message, ':white_check_mark: :circus_tent: _ringleader_ *UP*')
+        bot.reply(message, ':white_check_mark::circus_tent: _ringleader_ *UP*')
       } else {
-        bot.reply(message, ':rotating_light: :circus_tent: _ringleader_ *DOWN*')
+        bot.reply(message, ':rotating_light::circus_tent: _ringleader_ *DOWN*')
       }
     })
     .catch(function (err) {
