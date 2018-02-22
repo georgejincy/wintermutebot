@@ -3,9 +3,12 @@ const botkit = require('botkit')
 const request = require('request-promise')
 const token = 'SLACK_API_TOKEN'
 const slackAPIToken = require(path.join(__dirname, 'config.json'))[token]
+const knysnaURL = require(path.join(__dirname, 'config.json'))['KNYSNA_API_URL']
+const ringleaderURL = require(path.join(__dirname, 'config.json'))['RL_API_URL']
 
 var controller = botkit.slackbot({ debug: true })
 var fullChannelList = []
+// var foodTruckList = []
 
 var wintermute = controller.spawn({ token: slackAPIToken })
 wintermute.startRTM(function (err, bot) {
@@ -29,7 +32,7 @@ wintermute.startRTM(function (err, bot) {
 function checkHealth () {
   request({
     method: 'GET',
-    uri: 'http://172.20.20.20:8080/v1/healthcheck',
+    uri: knysnaURL + '/v1/healthcheck',
     json: true
   })
     .then(function (response) {
@@ -51,7 +54,7 @@ function checkHealth () {
   request({
     method: 'GET',
     // uri: 'http://172.20.20.10:80/healthcheck', //test checking dev
-    uri: 'http://172.20.20.20:80/healthcheck',
+    uri: ringleaderURL + '/healthcheck',
     json: true
   })
     .then(function (response) {
@@ -74,7 +77,7 @@ function checkHealth () {
 function checkKnysnaHealth (bot, message) {
   request({
     method: 'GET',
-    uri: 'http://172.20.20.20:8080/v1/healthcheck',
+    uri: knysnaURL + '/v1/healthcheck',
     json: true
   })
     .then(function (response) {
@@ -96,7 +99,7 @@ function checkKnysnaHealth (bot, message) {
 function checkRingleaderHealth (bot, message) {
   request({
     method: 'GET',
-    uri: 'http://172.20.20.20:80/healthcheck',
+    uri: ringleaderURL + '/healthcheck',
     json: true
   })
     .then(function (response) {
@@ -168,13 +171,13 @@ controller.hears(
   }
 )
 
-controller.hears(['test'], 'direct_message,direct_mention,mention', function (
-  bot,
-  message
-) {
-  let id = getChannelID('doitlive')
-  bot.reply(message, 'Channel id for ' + id)
-})
+controller.hears(
+  ['foodtruck', 'lunch', 'food', 'truck'],
+  'direct_message,direct_mention,mention',
+  function (bot, message) {
+    bot.reply(message, 'Next Wednesday ' + 'Queso Monster')
+  }
+)
 
 // Check health of ringleader and knysna every 10 minutes
 // Send an alert in the doitlive channel if any applications are down
