@@ -53,7 +53,6 @@ function checkHealth () {
 
   request({
     method: 'GET',
-    // uri: 'http://172.20.20.10:80/healthcheck', //test checking dev
     uri: ringleaderURL + '/healthcheck',
     json: true
   })
