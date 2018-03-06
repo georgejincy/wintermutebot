@@ -51,9 +51,10 @@ function checkHealth () {
       })
     })
 
+  // Don't log these healthchecks
   request({
     method: 'GET',
-    uri: ringleaderURL + '/healthcheck',
+    uri: ringleaderURL + '/healthcheck/false',
     json: true
   })
     .then(function (response) {
@@ -95,10 +96,11 @@ function checkKnysnaHealth (bot, message) {
     })
 }
 
+// Log these healthchecks
 function checkRingleaderHealth (bot, message) {
   request({
     method: 'GET',
-    uri: ringleaderURL + '/healthcheck',
+    uri: ringleaderURL + '/healthcheck/true',
     json: true
   })
     .then(function (response) {
